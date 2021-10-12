@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import liff from '@line/liff';
 
 function App() {
+  const [pictureUrl, setPictureUrl] = useState();
+  const [idToken, setIdToken] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [userId, setUserId] = useState("");
+
+   const initLine = () => {
+    liff.init({ liffId: '1656526665-Pn8ng4dB' }, () => {
+      if (liff.isLoggedIn()) {
+        runApp();
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err));
+  }
+
+  const runApp = () => {
+    const idToken = liff.getIDToken();
+    setIdToken(idToken);
+    liff.getProfile().then(profile => {
+      console.log(profile);
+      setDisplayName(profile.displayName);
+      setPictureUrl(profile.pictureUrl);
+      setStatusMessage(profile.statusMessage);
+      //setUserId(profile.userId);
+    }).catch(err => console.error(err));
+  }
+
+  useEffect(() => {
+    initLine();
+  }, []);
+
+  const logout = () => {
+    liff.logout();
+    window.location.reload();
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello
+      <button onClick={() => logout()} style={{ width: "100%", height: 30 }}>Logout</button>
     </div>
   );
 }
