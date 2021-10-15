@@ -92,7 +92,7 @@ function App() {
 
   useEffect(() => {
     initLine();
-  }, []);*/
+  }, []);
 
   const logout = () => {
     liff.logout();
@@ -103,7 +103,7 @@ function App() {
       <p className='m-10 text-4xl font-bold'>Line Profile Card</p>
       <button onClick={() => logout()} style={{ width: "100%", height: 30 }}>
         Logout
-      </button> 
+      </button>
       <div
         className='bg-red-400 w-3/12 h-96 flex flex-col items-center'
         id='exportContainer'
