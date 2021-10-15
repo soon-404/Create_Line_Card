@@ -5,9 +5,10 @@ import liff from "@line/liff";
 function App() {
   const [pictureUrl, setPictureUrl] = useState();
   const [idToken, setIdToken] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [statusMessage, setStatusMessage] = useState("");
+  const [displayName, setDisplayName] = useState("Test");
+  const [statusMessage, setStatusMessage] = useState("Hello ?");
   const [userId, setUserId] = useState("");
+  const [email, setEmail] = useState("");
 
   const initLine = () => {
     liff.init(
@@ -46,7 +47,7 @@ function App() {
         return image;
       })
       .then((image) => {
-        saveAs(image, "exported-vis.png");
+        saveAs(image, "myLineCard.png");
         html.style.width = null;
         body.style.width = null;
       });
@@ -80,10 +81,10 @@ function App() {
     liff
       .getProfile()
       .then((profile) => {
-        console.log(profile);
         setDisplayName(profile.displayName);
         setPictureUrl(profile.pictureUrl);
         setStatusMessage(profile.statusMessage);
+        setEmail(liff.getDecodeIDToken().email);
         //setUserId(profile.userId);
       })
       .catch((err) => console.error(err));
@@ -91,23 +92,32 @@ function App() {
 
   useEffect(() => {
     initLine();
-  }, []);
+  }, []);*/
 
   const logout = () => {
     liff.logout();
     window.location.reload();
   };
   return (
-    <div className='App'>
-      Hello
+    <div className='w-screen h-screen flex flex-col items-center'>
+      <p className='m-10 text-4xl font-bold'>Line Profile Card</p>
       <button onClick={() => logout()} style={{ width: "100%", height: 30 }}>
         Logout
-      </button>
+      </button> 
+      <div
+        className='bg-red-400 w-3/12 h-96 flex flex-col items-center'
+        id='exportContainer'
+      >
+        <p className='text-4xl m-4'>{displayName}</p>
+        <img src={pictureUrl} className='w-36 h-36'></img>
+        <p className='text-2xl m-4'>{statusMessage}</p>
+        <img src={pictureUrl} className='w-16 h-20'></img>
+      </div>
       <button
         onClick={() => exportAsPicture()}
-        style={{ width: "100%", height: 30 }}
+        className='w-96 h-16 m-10 bg-green-400'
       >
-        Logout
+        Save
       </button>
     </div>
   );
