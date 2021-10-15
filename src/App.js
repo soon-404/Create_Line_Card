@@ -114,10 +114,10 @@ function App() {
         className='w-96 h-16 m-10 bg-green-400'
       >
         Save
-      </button>
+      </button> */}
       <button onClick={() => logout()} className='w-96 h-16 m-10 bg-green-400'>
         Logout
-      </button> */}
+      </button>
     </div>
   );
 }
