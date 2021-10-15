@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import liff from "@line/liff";
+import logo from "./logo.svg";
 
 function App() {
   const [pictureUrl, setPictureUrl] = useState();
@@ -21,6 +22,15 @@ function App() {
       },
       (err) => console.error(err)
     );
+  };
+
+  useEffect(() => {
+    initLine();
+  }, []);
+
+  const logout = () => {
+    liff.logout();
+    window.location.reload();
   };
 
   const exportAsPicture = () => {
@@ -45,7 +55,7 @@ function App() {
       letterRendering: 1,
       allowTaint: false,
       useCORS: true,
-      scale: 2,
+      scale: 3,
     })
       .then((canvas) => {
         var image = canvas.toDataURL("image/png", 1.0);
@@ -94,34 +104,29 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-  useEffect(() => {
-    initLine();
-  }, []);
-
-  const logout = () => {
-    liff.logout();
-    window.location.reload();
-  };
-
   return (
-    <div className='w-screen h-screen flex flex-col items-center'>
-      <p className='m-10 text-4xl font-bold'>Line Profile Card</p>
+    <div className='w-screen h-screen flex flex-col items-center bg-mainbg bg-local bg-cover bg-center bg-no-repeat overflow-auto'>
+      <p className='m-10 text-5xl font-bold font-header'>Line Profile Card</p>
       <div
-        className='bg-red-400 w-3/12 h-96 flex flex-col items-center'
+        className='bg-white w-96 h-box flex flex-col items-center'
         id='exportContainer'
       >
-        <p className='text-4xl m-4'>{displayName}</p>
-        <img src={pictureUrl} className='w-36 h-36'></img>
-        <p className='text-2xl m-4'>{statusMessage}</p>
-        <img src={pictureUrl} className='w-16 h-20'></img>
+        <p className='text-5xl m-10 font-body font-extrabold'>{displayName}</p>
+        <div className='bg-blue-400 w-40 h-40'></div>
+        {/* <img src={logo} className='w-28 h-28'></img> */}
+        <p className='text-4xl m-10 font-body'>{statusMessage}</p>
+        {/* <img src={pictureUrl} className='w-16 h-20'></img> */}
       </div>
       <button
         onClick={() => exportAsPicture()}
-        className='w-96 h-16 m-10 bg-green-400'
+        className='w-96 h-16 m-6 bg-green-500 rounded-full font-header text-3xl flex justify-center items-center text-white'
       >
         Save
       </button>
-      <button onClick={() => logout()} className='w-96 h-16 m-10 bg-green-400'>
+      <button
+        onClick={() => logout()}
+        className='w-96 h-16 rounded-full font-header text-3xl flex justify-center items-center bg-red-400 text-white'
+      >
         Logout
       </button>
     </div>
