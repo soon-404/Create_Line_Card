@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import liff from "@line/liff";
-import logo from "./logo.svg";
 
 function App() {
   const [pictureUrl, setPictureUrl] = useState();
@@ -112,8 +111,7 @@ function App() {
         id='exportContainer'
       >
         <p className='text-5xl m-10 font-body font-extrabold'>{displayName}</p>
-        <div className='bg-blue-400 w-40 h-40'></div>
-        {/* <img src={logo} className='w-28 h-28'></img> */}
+        <img src={pictureUrl} className='bg-blue-400 w-40 h-40'></img>
         <p className='text-4xl m-10 font-body'>{statusMessage}</p>
         {/* <img src={pictureUrl} className='w-16 h-20'></img> */}
       </div>
