@@ -3,25 +3,25 @@ import html2canvas from "html2canvas";
 import liff from "@line/liff";
 
 function App() {
-  const [pictureUrl, setPictureUrl] = useState();
-  const [idToken, setIdToken] = useState("");
-  const [displayName, setDisplayName] = useState("Test");
-  const [statusMessage, setStatusMessage] = useState("Hello ?");
-  const [userId, setUserId] = useState("");
+  // const [pictureUrl, setPictureUrl] = useState();
+  // const [idToken, setIdToken] = useState("");
+  // const [displayName, setDisplayName] = useState("Test");
+  // const [statusMessage, setStatusMessage] = useState("Hello ?");
+  // const [userId, setUserId] = useState("");
 
-  const initLine = () => {
-    liff.init(
-      { liffId: "1656526665-Pn8ng4dB" },
-      () => {
-        if (liff.isLoggedIn()) {
-          runApp();
-        } else {
-          liff.login();
-        }
-      },
-      (err) => console.error(err)
-    );
-  };
+  // const initLine = () => {
+  //   liff.init(
+  //     { liffId: "1656526665-Pn8ng4dB" },
+  //     () => {
+  //       if (liff.isLoggedIn()) {
+  //         runApp();
+  //       } else {
+  //         liff.login();
+  //       }
+  //     },
+  //     (err) => console.error(err)
+  //   );
+  // };
 
   // const exportAsPicture = () => {
   //   var html = document.getElementsByTagName("HTML")[0];
@@ -74,28 +74,28 @@ function App() {
   //   elem.remove();
   // };
 
-  const runApp = () => {
-    const idToken = liff.getIDToken();
-    setIdToken(idToken);
-    liff
-      .getProfile()
-      .then((profile) => {
-        setDisplayName(profile.displayName);
-        setPictureUrl(profile.pictureUrl);
-        setStatusMessage(profile.statusMessage);
-        //setUserId(profile.userId);
-      })
-      .catch((err) => console.error(err));
-  };
+  // const runApp = () => {
+  //   const idToken = liff.getIDToken();
+  //   setIdToken(idToken);
+  //   liff
+  //     .getProfile()
+  //     .then((profile) => {
+  //       setDisplayName(profile.displayName);
+  //       setPictureUrl(profile.pictureUrl);
+  //       setStatusMessage(profile.statusMessage);
+  //       //setUserId(profile.userId);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
 
-  useEffect(() => {
-    initLine();
-  }, []);
+  // useEffect(() => {
+  //   initLine();
+  // }, []);
 
-  const logout = () => {
-    liff.logout();
-    window.location.reload();
-  };
+  // const logout = () => {
+  //   liff.logout();
+  //   window.location.reload();
+  // };
 
   return (
     <div className='w-screen h-screen flex flex-col items-center'>
@@ -115,9 +115,9 @@ function App() {
       >
         Save
       </button> */}
-      <button onClick={() => logout()} className='w-96 h-16 m-10 bg-green-400'>
+      {/* <button onClick={() => logout()} className='w-96 h-16 m-10 bg-green-400'>
         Logout
-      </button>
+      </button> */}
     </div>
   );
 }
