@@ -40,7 +40,12 @@ function App() {
     html.style.width = htmlWidth + "px";
     body.style.width = bodyWidth + "px";
 
-    html2canvas(data)
+    html2canvas(data, {
+      logging: true,
+      letterRendering: 1,
+      allowTaint: false,
+      useCORS: true,
+    })
       .then((canvas) => {
         var image = canvas.toDataURL("image/png", 1.0);
         return image;
