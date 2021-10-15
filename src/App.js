@@ -96,6 +96,7 @@ function App() {
     liff.logout();
     window.location.reload();
   };
+
   return (
     <div className='w-screen h-screen flex flex-col items-center'>
       <p className='m-10 text-4xl font-bold'>Line Profile Card</p>
@@ -116,6 +117,9 @@ function App() {
         className='w-96 h-16 m-10 bg-green-400'
       >
         Save
+      </button>
+      <button onClick={() => logout()} className='w-96 h-16 m-10 bg-green-400'>
+        Logout
       </button>
     </div>
   );
