@@ -111,7 +111,10 @@ function App() {
         id='exportContainer'
       >
         <p className='text-5xl m-10 font-body font-extrabold'>{displayName}</p>
-        <img src={pictureUrl} className='bg-blue-400 w-40 h-40'></img>
+        <img
+          src={pictureUrl}
+          className='bg-blue-400 w-40 h-40 rounded-full'
+        ></img>
         <p className='text-4xl m-10 font-body'>{statusMessage}</p>
         {/* <img src={pictureUrl} className='w-16 h-20'></img> */}
       </div>
