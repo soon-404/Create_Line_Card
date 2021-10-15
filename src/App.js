@@ -45,6 +45,7 @@ function App() {
       letterRendering: 1,
       allowTaint: false,
       useCORS: true,
+      scale: 2,
     })
       .then((canvas) => {
         var image = canvas.toDataURL("image/png", 1.0);
