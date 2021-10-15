@@ -99,7 +99,7 @@ function App() {
 
   return (
     <div className='w-screen h-screen flex flex-col items-center'>
-      <p className='m-10 text-4xl font-bold'>Line Profile Card</p>
+      {/* <p className='m-10 text-4xl font-bold'>Line Profile Card</p>
       <div
         className='bg-red-400 w-3/12 h-96 flex flex-col items-center'
         id='exportContainer'
@@ -117,7 +117,7 @@ function App() {
       </button>
       <button onClick={() => logout()} className='w-96 h-16 m-10 bg-green-400'>
         Logout
-      </button>
+      </button> */}
     </div>
   );
 }
