@@ -8,7 +8,6 @@ function App() {
   const [displayName, setDisplayName] = useState("Test");
   const [statusMessage, setStatusMessage] = useState("Hello ?");
   const [userId, setUserId] = useState("");
-  const [email, setEmail] = useState("");
 
   const initLine = () => {
     liff.init(
@@ -84,7 +83,6 @@ function App() {
         setDisplayName(profile.displayName);
         setPictureUrl(profile.pictureUrl);
         setStatusMessage(profile.statusMessage);
-        setEmail(liff.getDecodeIDToken().email);
         //setUserId(profile.userId);
       })
       .catch((err) => console.error(err));
