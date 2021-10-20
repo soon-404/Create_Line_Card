@@ -1,5 +1,5 @@
 # Create Line Card
-https://dashboard.heroku.com/apps/soon-line-login/activity/builds/4f9b37f3-a560-411c-8ba3-982f1d2b37db
+https://soon-line-login.herokuapp.com/
 
 Create your Line profile card by login with Line and save your card to png file.
 
